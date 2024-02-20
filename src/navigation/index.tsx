@@ -9,7 +9,15 @@ export const RootStack = () => {
   return (
     <Navigator>
       <Screen name="HomeScreen" component={HomeScreen} />
-      <Screen name="CouponScreen" component={CouponScreen} />
+      <Screen
+        name="CouponScreen"
+        component={CouponScreen}
+        options={{
+          title: 'คูปองของฉัน',
+          headerBackTitleVisible: false,
+          headerTintColor: '#000000',
+        }}
+      />
     </Navigator>
   );
 };
