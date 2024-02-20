@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import Link from '../../components/Link';
 import {Coupon} from '../../services';
 import dayjs from 'dayjs';
+import VerticalDashedLine from '../../components/VerticalDashedLine';
 
 interface IProps {
   item: Coupon;
@@ -39,6 +40,9 @@ export default function CouponListItem({
           style={styles.image}
           resizeMode="contain"
         />
+      </View>
+      <View style={{marginLeft: 10}}>
+        <VerticalDashedLine width={2} height={100} color={'lightgray'} />
       </View>
       <View style={styles.detailContainer}>
         <Text style={styles.title} numberOfLines={1}>
