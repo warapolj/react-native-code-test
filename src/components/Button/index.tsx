@@ -63,12 +63,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 6,
-    minWidth: 80,
+    minWidth: 60,
     minHeight: 40,
     alignItems: 'center',
   },
   text: {
     fontWeight: '600',
-    fontSize: 15,
   },
 });

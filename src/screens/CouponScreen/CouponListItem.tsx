@@ -57,7 +57,9 @@ export default function CouponListItem({
                   marginRight: 10,
                 }}>
                 <LocaltionPinIcon width={15} height={15} fill="gray" />
-                <Text numberOfLines={1} style={{color: 'gray', marginLeft: 5}}>
+                <Text
+                  numberOfLines={1}
+                  style={{color: 'gray', marginLeft: 5, fontSize: 13}}>
                   {item.shopName}
                 </Text>
               </Row>
@@ -65,7 +67,7 @@ export default function CouponListItem({
             {item.reviewRate && (
               <Row style={{alignItems: 'center'}}>
                 <StarIcon width={15} height={15} />
-                <Text style={{color: 'gray', marginLeft: 5}}>
+                <Text style={{color: 'gray', marginLeft: 5, fontSize: 13}}>
                   {item.reviewRate.toFixed(1)}
                 </Text>
               </Row>
@@ -74,10 +76,10 @@ export default function CouponListItem({
         )}
         <Text
           numberOfLines={item.shopName || item.reviewRate ? 1 : 2}
-          style={{color: 'gray'}}>
+          style={{color: 'gray', fontSize: 13}}>
           {item.description}
         </Text>
-        <Text numberOfLines={1} style={{color: 'gray'}}>
+        <Text numberOfLines={1} style={{color: 'gray', fontSize: 13}}>
           {dayjs(item.expirationDate).format('DD/MM/YYYY HH:mm')} น.
         </Text>
       </View>
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
+    color: '#000000',
   },
 });

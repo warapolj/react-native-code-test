@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     marginTop: 20,
+    color: '#000000',
   },
   label: {
     color: 'gray',
