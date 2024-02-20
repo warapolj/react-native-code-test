@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-import {Pressable, PressableProps, Text, View} from 'react-native';
+import {Pressable, PressableProps, Text, View, StyleSheet} from 'react-native';
 
 interface IProps extends PropsWithChildren<PressableProps> {
   variant?: 'solid' | 'outline';
@@ -40,18 +40,11 @@ export default function Button({variant = 'solid', ...props}: IProps) {
           <View
             style={{
               transform: [{scale: pressed ? 0.99 : 1}],
-              backgroundColor: '#3F78E1',
-              paddingHorizontal: 15,
-              paddingVertical: 10,
-              borderRadius: 6,
-              minWidth: 80,
-              minHeight: 40,
-              alignItems: 'center',
+              ...styles.button,
               ...variantStyle.button,
             }}>
             {typeof props.children === 'string' ? (
-              <Text
-                style={{fontWeight: '600', fontSize: 15, ...variantStyle.text}}>
+              <Text style={{...styles.text, ...variantStyle.text}}>
                 {props.children}
               </Text>
             ) : (
@@ -63,3 +56,19 @@ export default function Button({variant = 'solid', ...props}: IProps) {
     </Pressable>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#3F78E1',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderRadius: 6,
+    minWidth: 80,
+    minHeight: 40,
+    alignItems: 'center',
+  },
+  text: {
+    fontWeight: '600',
+    fontSize: 15,
+  },
+});

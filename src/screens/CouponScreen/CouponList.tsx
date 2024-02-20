@@ -3,6 +3,7 @@ import {FlatList, ListRenderItemInfo} from 'react-native';
 import {useMyCoupons} from './useMyCoupons';
 import {Coupon} from '../../services';
 import CouponListItem from './CouponListItem';
+import CouponListHeader from './CouponListHeader';
 
 export default function CouponList() {
   const {coupons} = useMyCoupons();
@@ -33,6 +34,7 @@ export default function CouponList() {
       contentContainerStyle={{
         paddingBottom: 20,
       }}
+      ListHeaderComponent={CouponListHeader}
     />
   );
 }
