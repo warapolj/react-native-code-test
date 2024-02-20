@@ -2,9 +2,10 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Button, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {NavigationProps} from '../../navigation/interfaces';
 
 function HomeScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   return (
     <SafeAreaView style={styles.container}>
