@@ -1,7 +1,38 @@
 import React, {PropsWithChildren} from 'react';
 import {Pressable, PressableProps, Text, View} from 'react-native';
 
-export default function Button(props: PropsWithChildren<PressableProps>) {
+interface IProps extends PropsWithChildren<PressableProps> {
+  variant?: 'solid' | 'outline';
+}
+
+export default function Button({variant = 'solid', ...props}: IProps) {
+  let variantStyle = {
+    button: {},
+    text: {},
+  };
+
+  if (variant === 'outline') {
+    variantStyle = {
+      button: {
+        backgroundColor: 'transparent',
+        borderWidth: 1,
+        borderColor: '#3F78E1',
+      },
+      text: {
+        color: '#3F78E1',
+      },
+    };
+  } else {
+    variantStyle = {
+      button: {
+        backgroundColor: '#3F78E1',
+      },
+      text: {
+        color: '#FFFFFF',
+      },
+    };
+  }
+
   return (
     <Pressable {...props}>
       {({pressed}) => {
@@ -13,9 +44,14 @@ export default function Button(props: PropsWithChildren<PressableProps>) {
               paddingHorizontal: 15,
               paddingVertical: 10,
               borderRadius: 6,
+              minWidth: 80,
+              minHeight: 40,
+              alignItems: 'center',
+              ...variantStyle.button,
             }}>
             {typeof props.children === 'string' ? (
-              <Text style={{fontWeight: '600', fontSize: 15, color: '#FFFFFF'}}>
+              <Text
+                style={{fontWeight: '600', fontSize: 15, ...variantStyle.text}}>
                 {props.children}
               </Text>
             ) : (
