@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, View, StyleSheet} from 'react-native';
+import {Image, Text, View, StyleSheet, Pressable} from 'react-native';
 import LocaltionPinIcon from '../../../assets/location-pin.svg';
 import StarIcon from '../../../assets/star.svg';
 import {Row} from '../../components/Row';
@@ -10,11 +10,29 @@ import {Coupon} from '../../services';
 
 interface IProps {
   item: Coupon;
+  isSelected: boolean;
+  onPressUseCoupon: (couponId: string) => void;
+  onPress: (couponId: string) => void;
+  onPressRemoveCoupon: () => void;
 }
 
-export default function CouponListItem({item}: IProps) {
+export default function CouponListItem({
+  item,
+  isSelected,
+  onPressUseCoupon,
+  onPress,
+  onPressRemoveCoupon,
+}: IProps) {
+  const handleUseCoupon = () => {
+    if (isSelected) {
+      onPressRemoveCoupon();
+    } else {
+      onPressUseCoupon(item.id);
+    }
+  };
+
   return (
-    <Row style={styles.container}>
+    <Pressable style={[styles.container]} onPress={() => onPress(item.id)}>
       <View style={{justifyContent: 'center'}}>
         <Image
           source={{uri: item.image}}
@@ -60,17 +78,22 @@ export default function CouponListItem({item}: IProps) {
         </Text>
       </View>
       <View style={{justifyContent: 'center'}}>
-        <Button>ใช้คูปอง</Button>
+        <Button
+          onPress={handleUseCoupon}
+          variant={isSelected ? 'outline' : 'solid'}>
+          {isSelected ? 'ยกเลิก' : 'ใช้คูปอง'}
+        </Button>
         <View style={styles.linkContainer}>
           <Link>เงื่อนไข</Link>
         </View>
       </View>
-    </Row>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     borderWidth: 1,
     borderColor: '#3F78E1',
     borderRadius: 12,

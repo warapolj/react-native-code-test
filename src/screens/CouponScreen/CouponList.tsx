@@ -6,11 +6,22 @@ import CouponListItem from './CouponListItem';
 
 export default function CouponList() {
   const {coupons} = useMyCoupons();
-  const [selectedCouponId, setSelectedCouponId] = useState<string>('');
+  const [selectedCouponId, setSelectedCouponId] = useState('');
 
-  const renderItem = useCallback(({item}: ListRenderItemInfo<Coupon>) => {
-    return <CouponListItem item={item} />;
-  }, []);
+  const renderItem = useCallback(
+    ({item}: ListRenderItemInfo<Coupon>) => {
+      return (
+        <CouponListItem
+          item={item}
+          isSelected={item.id === selectedCouponId}
+          onPress={() => {}}
+          onPressUseCoupon={setSelectedCouponId}
+          onPressRemoveCoupon={() => setSelectedCouponId('')}
+        />
+      );
+    },
+    [selectedCouponId],
+  );
 
   return (
     <FlatList
