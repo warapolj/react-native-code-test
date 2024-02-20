@@ -1,18 +1,19 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Button, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import CouponList from './CouponList';
 
 function CouponScreen() {
-  const navigation = useNavigation();
-
-  return <SafeAreaView style={styles.container}></SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.container} edges={['bottom']}>
+      <CouponList />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
   },
 });
 
