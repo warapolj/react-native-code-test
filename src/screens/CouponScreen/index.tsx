@@ -40,6 +40,7 @@ function CouponScreen() {
                 const isActive = props.navigationState.index === index;
                 return (
                   <TouchableOpacity
+                    key={route.key}
                     onPress={() => props.jumpTo(route.key)}
                     style={{padding: 10, width: `${100 / routes.length}%`}}>
                     <Text

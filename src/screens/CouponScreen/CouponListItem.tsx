@@ -3,16 +3,16 @@ import {Image, Text, View, StyleSheet, Pressable} from 'react-native';
 import LocaltionPinIcon from '../../../assets/location-pin.svg';
 import StarIcon from '../../../assets/star.svg';
 import {Row} from '../../components/Row';
-import {formatDate} from '../../utils';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
 import {Coupon} from '../../services';
+import dayjs from 'dayjs';
 
 interface IProps {
   item: Coupon;
   isSelected: boolean;
   onPressUseCoupon: (couponId: string) => void;
-  onPress: (couponId: string) => void;
+  onPress: () => void;
   onPressRemoveCoupon: () => void;
 }
 
@@ -32,7 +32,7 @@ export default function CouponListItem({
   };
 
   return (
-    <Pressable style={[styles.container]} onPress={() => onPress(item.id)}>
+    <Pressable style={[styles.container]} onPress={onPress}>
       <View style={{justifyContent: 'center'}}>
         <Image
           source={{uri: item.image}}
@@ -74,7 +74,7 @@ export default function CouponListItem({
           {item.description}
         </Text>
         <Text numberOfLines={1} style={{color: 'gray'}}>
-          {formatDate(item.expirationDate)}
+          {dayjs(item.expirationDate).format('DD/MM/YYYY HH:mm')} น.
         </Text>
       </View>
       <View style={{justifyContent: 'center'}}>
